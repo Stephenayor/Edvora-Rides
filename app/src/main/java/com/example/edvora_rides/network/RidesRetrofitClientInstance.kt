@@ -1,0 +1,50 @@
+package com.example.edvora_rides.network
+
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
+
+class RidesRetrofitClientInstance {
+    companion object retrofitInstance {
+        private var retrofit: Retrofit? = null
+        private val BASE_URL = "https://assessment.api.vweb.app/"
+
+        private val moshi = Moshi.Builder()
+            .add(KotlinJsonAdapterFactory())
+            .build()
+
+        fun getRetrofitInstance(): Retrofit? {
+//            val interceptor = HttpLoggingInterceptor()
+////            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+////            interceptor.setLevel(HttpLoggingInterceptor.Level.HEADERS)
+//            interceptor.level = HttpLoggingInterceptor.Level.HEADERS
+//            interceptor.level = HttpLoggingInterceptor.Level.BODY
+////            val builder = OkHttpClient().newBuilder()
+////            builder.addInterceptor(interceptor)
+
+//            OkHttpClient.Builder()
+//                .addInterceptor(interceptor)
+//                .addNetworkInterceptor(interceptor)
+//                .build()
+
+            val aLogger = HttpLoggingInterceptor()
+            aLogger.level = (HttpLoggingInterceptor.Level.BODY)
+            aLogger.level = (HttpLoggingInterceptor.Level.HEADERS)
+            val geeksforgeeks = OkHttpClient.Builder()
+            geeksforgeeks.addInterceptor(aLogger)
+
+
+            if (retrofit == null) {
+                retrofit = Retrofit.Builder()
+                    .baseUrl(BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .addConverterFactory(MoshiConverterFactory.create(moshi))
+                    .build()
+            }
+            return retrofit
+        }}
+}
