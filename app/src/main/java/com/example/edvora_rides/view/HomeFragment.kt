@@ -11,7 +11,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.edvora_rides.R
 import com.example.edvora_rides.databinding.FragmentHomeBinding
-import com.example.edvora_rides.model.User
 import com.example.edvora_rides.viewmodel.RidesViewModel
 import com.example.edvora_rides.viewmodel.RidesViewModelFactory
 
@@ -35,7 +34,7 @@ class HomeFragment : Fragment() {
         )
 
         setupViewModel()
-        ridesViewModel.getNearestRides()?.observe(viewLifecycleOwner, Observer { list ->
+        ridesViewModel.getUser()?.observe(viewLifecycleOwner, Observer { list ->
             list?.let {
                 binding.userName.text = list.name
                 context?.let { it1 ->

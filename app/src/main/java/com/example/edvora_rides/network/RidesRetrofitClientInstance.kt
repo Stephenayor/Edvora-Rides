@@ -31,20 +31,14 @@ class RidesRetrofitClientInstance {
 //                .addNetworkInterceptor(interceptor)
 //                .build()
 
-            val aLogger = HttpLoggingInterceptor()
-            aLogger.level = (HttpLoggingInterceptor.Level.BODY)
-            aLogger.level = (HttpLoggingInterceptor.Level.HEADERS)
-            val geeksforgeeks = OkHttpClient.Builder()
-            geeksforgeeks.addInterceptor(aLogger)
 
 
-            if (retrofit == null) {
                 retrofit = Retrofit.Builder()
                     .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .addConverterFactory(MoshiConverterFactory.create(moshi))
                     .build()
-            }
+
             return retrofit
         }}
 }
