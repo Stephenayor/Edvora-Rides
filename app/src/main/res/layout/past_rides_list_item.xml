@@ -3,19 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:card_view="http://schemas.android.com/tools"
     android:layout_margin="5dp"
-    app:cardCornerRadius="5dp">
+    app:cardCornerRadius="4dp"
+    card_view:cardCornerRadius="4dp"
+    android:background="@color/design_default_color_on_secondary"
+    app:cardBackgroundColor="@color/design_default_color_on_secondary">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/upcoming_ride_image_view"
-            android:layout_width="266dp"
+            android:id="@+id/past_ride_image_view"
+            android:layout_width="wrap_content"
             android:layout_height="148dp"
-            android:layout_marginLeft="47dp"
-            android:layout_marginTop="109dp"
+            android:layout_marginLeft="27dp"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/rounded_outline"
+            android:src="@drawable/rounded_outline"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,10 +29,10 @@
             android:id="@+id/city_name_text_view"
             android:layout_width="60dp"
             android:layout_height="15dp"
-            android:layout_marginLeft="10dp"
+            style="@style/TextAppearance"
             android:layout_marginTop="6dp"
-            app:layout_constraintStart_toStartOf="@id/city_name_text_view"
-            app:layout_constraintTop_toBottomOf="@id/upcoming_ride_image_view" />
+            app:layout_constraintStart_toStartOf="@id/past_ride_image_view"
+            app:layout_constraintTop_toBottomOf="@id/past_ride_image_view" />
 
         <TextView
             android:id="@+id/state_name_text_view"
@@ -34,25 +40,27 @@
             android:layout_height="15dp"
             android:layout_marginLeft="100dp"
             android:layout_marginTop="6dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/upcoming_ride_image_view" />
+            style="@style/TextAppearance"
+            app:layout_constraintEnd_toEndOf="@id/past_ride_image_view"
+            app:layout_constraintTop_toBottomOf="@id/past_ride_image_view" />
 
         <TextView
             android:id="@+id/ride_id_text"
             android:layout_width="wrap_content"
             android:layout_height="22dp"
-            android:layout_marginLeft="49dp"
             android:layout_marginTop="43dp"
-            android:text="Ride Id :"
-            app:layout_constraintStart_toStartOf="@id/city_name_text_view"
+            android:text="@string/ride_id"
+            style="@style/TextAppearance"
+            app:layout_constraintStart_toStartOf="@id/past_ride_image_view"
             app:layout_constraintTop_toBottomOf="@id/city_name_text_view" />
 
         <TextView
             android:id="@+id/ride_id_text_view"
             android:layout_width="wrap_content"
             android:layout_height="22dp"
-            android:layout_marginLeft="49dp"
+            android:layout_marginLeft="4dp"
             android:layout_marginTop="43dp"
+            style="@style/TextAppearance"
             app:layout_constraintBaseline_toBaselineOf="@id/ride_id_text"
             app:layout_constraintStart_toEndOf="@id/ride_id_text"
             app:layout_constraintTop_toBottomOf="@id/city_name_text_view" />
@@ -62,17 +70,18 @@
             android:layout_width="wrap_content"
             android:layout_height="22dp"
             android:layout_marginTop="10dp"
+            style="@style/TextAppearance"
             android:text="@string/origin_station"
-            app:layout_constraintStart_toStartOf="@id/ride_id_text"
-            app:layout_constraintTop_toBottomOf="@id/ride_id_text"
-
-            />
+            app:layout_constraintStart_toStartOf="@id/past_ride_image_view"
+            app:layout_constraintTop_toBottomOf="@id/ride_id_text" />
 
         <TextView
             android:id="@+id/origin_station_text_view"
             android:layout_width="wrap_content"
             android:layout_height="22dp"
             android:layout_marginTop="43dp"
+            android:layout_marginLeft="4dp"
+            style="@style/TextAppearance"
             app:layout_constraintBaseline_toBaselineOf="@id/origin_station_text"
             app:layout_constraintStart_toEndOf="@id/origin_station_text"
             app:layout_constraintTop_toBottomOf="@id/ride_id_text" />
@@ -83,7 +92,8 @@
             android:layout_height="22dp"
             android:layout_marginTop="10dp"
             android:text="@string/station_path"
-            app:layout_constraintStart_toStartOf="@id/origin_station_text"
+            style="@style/TextAppearance"
+            app:layout_constraintStart_toStartOf="@id/past_ride_image_view"
             app:layout_constraintTop_toBottomOf="@id/origin_station_text" />
 
         <TextView
@@ -91,6 +101,8 @@
             android:layout_width="wrap_content"
             android:layout_height="22dp"
             android:layout_marginTop="10dp"
+            android:layout_marginLeft="4dp"
+            style="@style/TextAppearance"
             app:layout_constraintBaseline_toBaselineOf="@id/station_path_text"
             app:layout_constraintStart_toEndOf="@id/station_path_text"
             app:layout_constraintTop_toBottomOf="@id/origin_station_text" />
@@ -101,7 +113,8 @@
             android:layout_height="22dp"
             android:layout_marginTop="10dp"
             android:text="@string/date"
-            app:layout_constraintStart_toStartOf="@id/station_path_text"
+            style="@style/TextAppearance"
+            app:layout_constraintStart_toStartOf="@id/past_ride_image_view"
             app:layout_constraintTop_toBottomOf="@id/station_path_text" />
 
         <TextView
@@ -109,6 +122,7 @@
             android:layout_width="wrap_content"
             android:layout_height="22dp"
             android:layout_marginTop="10dp"
+            style="@style/TextAppearance"
             app:layout_constraintBaseline_toBaselineOf="@id/date_text"
             app:layout_constraintStart_toEndOf="@id/date_text"
             app:layout_constraintTop_toBottomOf="@id/station_path_text_view" />
@@ -119,7 +133,7 @@
             android:layout_height="22dp"
             android:layout_marginTop="10dp"
             android:text="@string/distance"
-            app:layout_constraintStart_toStartOf="@id/date_text"
+            app:layout_constraintStart_toStartOf="@id/past_ride_image_view"
             app:layout_constraintTop_toBottomOf="@id/date_text" />
 
         <TextView
@@ -130,7 +144,6 @@
             app:layout_constraintBaseline_toBaselineOf="@id/distance_text"
             app:layout_constraintStart_toEndOf="@id/distance_text"
             app:layout_constraintTop_toBottomOf="@id/date_text_view" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

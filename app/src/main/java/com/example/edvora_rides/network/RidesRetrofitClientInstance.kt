@@ -18,20 +18,6 @@ class RidesRetrofitClientInstance {
             .build()
 
         fun getRetrofitInstance(): Retrofit? {
-//            val interceptor = HttpLoggingInterceptor()
-////            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
-////            interceptor.setLevel(HttpLoggingInterceptor.Level.HEADERS)
-//            interceptor.level = HttpLoggingInterceptor.Level.HEADERS
-//            interceptor.level = HttpLoggingInterceptor.Level.BODY
-////            val builder = OkHttpClient().newBuilder()
-////            builder.addInterceptor(interceptor)
-
-//            OkHttpClient.Builder()
-//                .addInterceptor(interceptor)
-//                .addNetworkInterceptor(interceptor)
-//                .build()
-
-
 
                 retrofit = Retrofit.Builder()
                     .baseUrl(BASE_URL)

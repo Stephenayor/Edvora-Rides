@@ -2,7 +2,6 @@ package com.example.edvora_rides.view
 
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,11 +19,10 @@ import com.example.edvora_rides.model.Rides
 import com.example.edvora_rides.model.User
 import com.example.edvora_rides.viewmodel.RidesViewModel
 import com.example.edvora_rides.viewmodel.RidesViewModelFactory
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
+import com.google.android.material.snackbar.Snackbar
 
 
-class UpcomingFragment : Fragment() {
+class UpcomingRidesFragment : Fragment() {
     lateinit var binding: FragmentUpcomingBinding
     lateinit var ridesViewModel: RidesViewModel
     lateinit var user: User
@@ -45,31 +43,20 @@ class UpcomingFragment : Fragment() {
         )
 
         setupViewModel()
-        getUserStationCode()
         ridesViewModel.getUpcomingRide()?.observe(viewLifecycleOwner, Observer { list ->
             list?.let {
-                Log.d("API CALL", "STATUS 300")
-                val current = LocalDateTime.now()
-                val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS")
-                val formatted = current.format(formatter)
-
-                val filteredList = list.filter { rides ->
-                    rides?.date!! > formatted}
-                displayUpcomingRides(filteredList)
-
-        }})
-
-
-        return binding.root
-    }
-
-
-    private fun getUserStationCode() {
-        ridesViewModel.getUser()?.observe(viewLifecycleOwner, Observer {
-            if (it != null) {
-                user = it
+                var currentDate: String? = ridesViewModel.getCurrentDate()
+                val filteredUpcomingRidesList = list.filter { rides ->
+                    rides?.date!! > currentDate!!
+                }
+                displayUpcomingRides(filteredUpcomingRidesList)
+                view?.let { it1 ->
+                    Snackbar.make(it1, "NO RIDES AVAILABLE", Snackbar.LENGTH_LONG).show()
+                };
             }
         })
+
+        return binding.root
     }
 
     private fun setupViewModel() {
@@ -88,7 +75,6 @@ class UpcomingFragment : Fragment() {
         }
         binding.upcomingRidesRecyclerView.adapter = upcomingRidesAdapter
         val layoutManager = LinearLayoutManager.VERTICAL
-
         binding.upcomingRidesRecyclerView.addItemDecoration(
             DividerItemDecoration(
                 context,
@@ -96,5 +82,4 @@ class UpcomingFragment : Fragment() {
             )
         )
     }
-
 }

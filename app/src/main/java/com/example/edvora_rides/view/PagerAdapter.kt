@@ -12,20 +12,20 @@ class PagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
     override fun getItem(position: Int): Fragment {
         when(position) {
             0 -> {
-                return NearestFragment()
+                return NearestRidesFragment()
             }
             1 -> {
-                return UpcomingFragment()
+                return UpcomingRidesFragment()
             }
             2 -> {
-                return PastFragment()
+                return PastRidesFragment()
             }
             3 -> {
                 return FiltersFragment()
             }
 
             else -> {
-                return NearestFragment()
+                return NearestRidesFragment()
             }
         }
     }

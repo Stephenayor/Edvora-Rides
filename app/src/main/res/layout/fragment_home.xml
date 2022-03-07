@@ -54,17 +54,17 @@
         android:id="@+id/user_image"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_marginStart="280dp"
+        android:layout_marginStart="300dp"
         android:layout_marginTop="23dp"
         style="@style/Base.CardView"
         android:src="@drawable/rounded_outline"
-
-        />
+        android:background="@drawable/rounded_outline" />
 
     <!-- Note: A RecyclerView can also be used -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/cardview_dark_background"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 

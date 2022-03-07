@@ -6,12 +6,12 @@
     <data>
         <variable
             name="nearestFragment"
-            type="com.example.edvora_rides.view.NearestFragment" />
+            type="com.example.edvora_rides.view.NearestRidesFragment" />
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.NearestFragment"
+    tools:context=".view.NearestRidesFragment"
     android:id="@+id/nearest_fragment"
     android:labelFor="@id/nearest_fragment">
 
