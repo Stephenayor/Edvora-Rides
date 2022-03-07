@@ -2,7 +2,7 @@
     <string name="app_name">Edvora-Rides</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="rides">Rides:</string>
+    <string name="rides">Rides</string>
     <string name="origin_station">Origin Station :</string>
     <string name="station_path">station_path :</string>
     <string name="date">Date :</string>

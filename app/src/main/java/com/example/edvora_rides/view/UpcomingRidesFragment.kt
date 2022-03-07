@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -50,9 +51,6 @@ class UpcomingRidesFragment : Fragment() {
                     rides?.date!! > currentDate!!
                 }
                 displayUpcomingRides(filteredUpcomingRidesList)
-                view?.let { it1 ->
-                    Snackbar.make(it1, "NO RIDES AVAILABLE", Snackbar.LENGTH_LONG).show()
-                };
             }
         })
 
@@ -69,6 +67,7 @@ class UpcomingRidesFragment : Fragment() {
     }
 
     private fun displayUpcomingRides(upcomingRidesList: List<Rides?>) {
+        Toast.makeText(context, "NO RIDES AVAILABLE", Toast.LENGTH_LONG).show()
         val upcomingRidesAdapter = UpcomingRidesAdapter()
         if (upcomingRidesList != null) {
             upcomingRidesAdapter.ridesList = upcomingRidesList

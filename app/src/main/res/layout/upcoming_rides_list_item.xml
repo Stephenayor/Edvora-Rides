@@ -16,7 +16,7 @@
 
         <ImageView
             android:id="@+id/upcoming_ride_image_view"
-            android:layout_width="wrap_content"
+            android:layout_width="340dp"
             android:layout_height="148dp"
             android:layout_marginLeft="27dp"
             android:layout_marginTop="18dp"
