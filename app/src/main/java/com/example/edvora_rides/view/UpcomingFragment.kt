@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.edvora_rides.R
 import com.example.edvora_rides.adapter.NearestRidesAdapter
+import com.example.edvora_rides.adapter.UpcomingRidesAdapter
 import com.example.edvora_rides.databinding.FragmentNearestBinding
 import com.example.edvora_rides.databinding.FragmentUpcomingBinding
 import com.example.edvora_rides.model.Rides
@@ -43,7 +44,7 @@ class UpcomingFragment : Fragment() {
         getUserStationCode()
         ridesViewModel.getUpcomingRide()?.observe(viewLifecycleOwner, Observer { list ->
             list?.let {
-                Log.d("API CALL", "STATUS 200")
+                Log.d("API CALL", "STATUS 300")
                 var rides: MutableList<Rides?>? = null
                 var integerDifference: Int? = null
 
@@ -72,12 +73,12 @@ class UpcomingFragment : Fragment() {
             ).get(RidesViewModel::class.java)
     }
 
-    private fun displayNearestRides(rideList: MutableList<Rides?>?) {
-        val nearestRidesAdapter = NearestRidesAdapter()
+    private fun displayUpcomingRides(rideList: MutableList<Rides?>?) {
+        val upcomingRidesAdapter = UpcomingRidesAdapter()
         if (rideList != null) {
-            nearestRidesAdapter.ridesList = rideList
+            upcomingRidesAdapter.ridesList = rideList
         }
-        binding.upcomingRidesRecyclerView.adapter = nearestRidesAdapter
+        binding.upcomingRidesRecyclerView.adapter = upcomingRidesAdapter
         val layoutManager = LinearLayoutManager.VERTICAL
 
         binding.upcomingRidesRecyclerView.addItemDecoration(
