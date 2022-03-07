@@ -45,37 +45,44 @@ class NearestFragment : Fragment() {
         ridesViewModel.getNearestRide()?.observe(viewLifecycleOwner, Observer { list ->
             list?.let {
                 Log.d("API CALL", "STATUS 200")
-                var rides: MutableList<Rides?>? = null
-                var integerDifference: Int? = null
 
-                for (i in list) {
-                    for (stationPathIndex in 0 until list[id]?.stationPath?.size!!) {
-                        if (user.stationCode?.minus((list[id]?.stationPath?.get(stationPathIndex)!!))
-                                ?.let { it1 ->
-                                    Math.abs(it1)
-                                } == 0
-                        ) {
-                            list.get(id)
-                            rides?.add(list.get(id))
-                            displayNearestRides(rides)
-                        } else {
-                            var difference: Int =
-                                user.stationCode?.minus(list[id]?.stationPath!!.get(stationPathIndex))
-                                    ?.let { it1 ->
-                                        Math.abs(
-                                            it1
-                                        )
-                                    }!!
-                            integerDifference = difference
-                            if (difference <= integerDifference!!) {
-                                var rideS: MutableList<Rides?>? = null
-                                rideS?.add(list[id])
-                                displayNearestRides(rideS)
-                            }
-                        }
-
-                    }
+                var rides: List<Rides?>? = null
+//                var integerDifference: Int? = null
+//                lateinit var nearestRide: Rides
+//
+//                   rideListLoop@ for (i in list) {
+//                        if (i != null) {
+//                        for (stationPathIndex in 0 until i.stationPath.size ) {
+//                            if (user.stationCode?.minus((i?.stationPath?.get(stationPathIndex)!!))
+//                                    ?.let { it1 ->i?.stationPath?.size!!
+//                                        Math.abs(it1) } == 0) {
+//                                rides?.add(i)
+//                                displayNearestRides(rides)
+//                            } else {
+//                                var difference: Int =
+//                                    user.stationCode?.minus(i.stationPath!!.get(stationPathIndex))
+//                                        ?.let { it1 ->
+//                                            Math.abs(
+//                                                it1
+//                                            )
+//                                        }!!
+//                                if (integerDifference != null && difference < integerDifference!!) {
+//                                    integerDifference = difference
+//                                    nearestRide = i
+//                                }
+//                            }
+//
+//                        }
+//                    }
+//                }
+//                                    rides?.add(nearestRide)
+//                                    displayNearestRides(rides)
+//            }
+                rides = list.sortedBy {
+                        ride -> ride?.stationPath?.min()
                 }
+                displayNearestRides(rides)
+
             }
         })
         return binding.root
@@ -98,7 +105,7 @@ class NearestFragment : Fragment() {
             ).get(RidesViewModel::class.java)
     }
 
-    private fun displayNearestRides(rideList: MutableList<Rides?>?) {
+    private fun displayNearestRides(rideList: List<Rides?>) {
         val nearestRidesAdapter = NearestRidesAdapter()
         if (rideList != null) {
             nearestRidesAdapter.ridesList = rideList

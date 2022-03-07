@@ -22,7 +22,7 @@ class RidesViewModel(application: Application) : AndroidViewModel(application) {
         return mutableLiveData
     }
 
-    fun getNearestRide(): LiveData<List<Rides?>>? {
+    fun getNearestRide(): MutableLiveData<List<Rides?>>? {
         ridesRepository = RidesRepository()
         if (mutableLiveDataRides == null) {
             mutableLiveDataRides = ridesRepository!!.getRides()

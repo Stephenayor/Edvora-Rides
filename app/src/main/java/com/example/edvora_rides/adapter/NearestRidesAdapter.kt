@@ -11,7 +11,7 @@ import com.example.edvora_rides.R
 import com.example.edvora_rides.model.Rides
 
 class NearestRidesAdapter() : RecyclerView.Adapter<NearestRidesAdapter.NearestRidesViewHolder>() {
-    var ridesList: MutableList<Rides?> = listOf<Rides>() as MutableList<Rides?>
+    var ridesList: List<Rides?> = listOf<Rides>()
         set(value) {
             field = value
             notifyDataSetChanged()
