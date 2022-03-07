@@ -30,4 +30,12 @@ class RidesViewModel(application: Application) : AndroidViewModel(application) {
         return mutableLiveDataRides
     }
 
+    fun getUpcomingRide(): LiveData<List<Rides?>>? {
+        ridesRepository = RidesRepository()
+        if (mutableLiveDataRides == null) {
+            mutableLiveDataRides = ridesRepository!!.getRides()
+        }
+        return mutableLiveDataRides
+    }
+
 }
