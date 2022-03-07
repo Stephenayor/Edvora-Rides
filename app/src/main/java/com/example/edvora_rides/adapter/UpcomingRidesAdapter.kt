@@ -11,7 +11,7 @@ import com.example.edvora_rides.R
 import com.example.edvora_rides.model.Rides
 
 class UpcomingRidesAdapter() : RecyclerView.Adapter<UpcomingRidesAdapter.UpcomingRidesViewHolder>() {
-    var ridesList: MutableList<Rides?> = listOf<Rides>() as MutableList<Rides?>
+    var ridesList: List<Rides?> = listOf<Rides>()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -23,11 +23,15 @@ class UpcomingRidesAdapter() : RecyclerView.Adapter<UpcomingRidesAdapter.Upcomin
     }
 
     override fun onBindViewHolder(holder: UpcomingRidesViewHolder, position: Int) {
-        Glide.with(holder.nearestRideImageView.context)
+        Glide.with(holder.upcomingRideImageView.context)
             .load(ridesList[position]?.mapUrl)
-            .into(holder.nearestRideImageView)
+            .into(holder.upcomingRideImageView)
         holder.cityNameTextView.text = ridesList[position]?.city
         holder.stateNameTextView.text = ridesList[position]?.state
+        holder.rideIDTextView.text = ridesList[position]?.id.toString()
+        holder.originStationTextView.text = ridesList[position]?.originStationCode.toString()
+        holder.stationPathTextView.text = ridesList[position]?.stationPath.toString()
+        holder.dateTextView.text = ridesList[position]?.date
     }
 
     override fun getItemCount(): Int {
@@ -35,7 +39,7 @@ class UpcomingRidesAdapter() : RecyclerView.Adapter<UpcomingRidesAdapter.Upcomin
     }
 
     class UpcomingRidesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val nearestRideImageView = itemView.findViewById<ImageView>(R.id.nearest_ride_image_view)
+        val upcomingRideImageView = itemView.findViewById<ImageView>(R.id.upcoming_ride_image_view)
         val cityNameTextView = itemView.findViewById<TextView>(R.id.city_name_text_view)
         val stateNameTextView = itemView.findViewById<TextView>(R.id.state_name_text_view)
         val rideIDTextView = itemView.findViewById<TextView>(R.id.ride_id_text_view)

@@ -39,7 +39,7 @@ class NearestRidesAdapter() : RecyclerView.Adapter<NearestRidesAdapter.NearestRi
     }
 
     class NearestRidesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val nearestRideImageView = itemView.findViewById<ImageView>(R.id.nearest_ride_image_view)
+        val nearestRideImageView = itemView.findViewById<ImageView>(R.id.upcoming_ride_image_view)
         val cityNameTextView = itemView.findViewById<TextView>(R.id.city_name_text_view)
         val stateNameTextView = itemView.findViewById<TextView>(R.id.state_name_text_view)
         val rideIDTextView = itemView.findViewById<TextView>(R.id.ride_id_text_view)

@@ -11,7 +11,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/nearest_ride_image_view"
+            android:id="@+id/upcoming_ride_image_view"
             android:layout_width="266dp"
             android:layout_height="148dp"
             android:layout_marginLeft="47dp"
@@ -26,7 +26,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="6dp"
             app:layout_constraintStart_toStartOf="@id/city_name_text_view"
-            app:layout_constraintTop_toBottomOf="@id/nearest_ride_image_view" />
+            app:layout_constraintTop_toBottomOf="@id/upcoming_ride_image_view" />
 
         <TextView
             android:id="@+id/state_name_text_view"
@@ -35,7 +35,7 @@
             android:layout_marginLeft="100dp"
             android:layout_marginTop="6dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/nearest_ride_image_view" />
+            app:layout_constraintTop_toBottomOf="@id/upcoming_ride_image_view" />
 
         <TextView
             android:id="@+id/ride_id_text"
