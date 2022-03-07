@@ -28,6 +28,10 @@ class NearestRidesAdapter() : RecyclerView.Adapter<NearestRidesAdapter.NearestRi
             .into(holder.nearestRideImageView)
         holder.cityNameTextView.text = ridesList[position]?.city
         holder.stateNameTextView.text = ridesList[position]?.state
+        holder.rideIDTextView.text = ridesList[position]?.id.toString()
+        holder.originStationTextView.text = ridesList[position]?.originStationCode.toString()
+        holder.stationPathTextView.text = ridesList[position]?.stationPath.toString()
+        holder.dateTextView.text = ridesList[position]?.date
     }
 
     override fun getItemCount(): Int {

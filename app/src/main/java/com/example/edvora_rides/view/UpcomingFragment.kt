@@ -45,8 +45,7 @@ class UpcomingFragment : Fragment() {
         ridesViewModel.getUpcomingRide()?.observe(viewLifecycleOwner, Observer { list ->
             list?.let {
                 Log.d("API CALL", "STATUS 300")
-                var rides: MutableList<Rides?>? = null
-                var integerDifference: Int? = null
+
 
             }
         })
